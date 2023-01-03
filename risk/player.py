@@ -220,14 +220,14 @@ class Player():
         dice_attackers = np.sort(dice_attackers)[::-1]
         dice_defenders = np.sort(dice_defenders)[::-1]
 
-        units_killed = 0
-        units_lost = 0
+        n_attackers_lost = 0
+        n_defenders_lost = 0
         for attack, defence in zip(dice_attackers, dice_defenders):
             if attack > defence:
-                units_killed += 1
+                n_defenders_lost += 1
             else:
-                units_lost += 1
-        return units_killed, units_lost
+                n_attackers_lost += 1
+        return n_attackers_lost, n_defenders_lost
 
     def _assign_country(self, country: Country) -> None:
         country.set_owner(self.name)
